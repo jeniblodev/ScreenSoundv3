@@ -16,7 +16,7 @@ internal class MenuMostrarMusicas : Menu
             Console.WriteLine("\nDiscografia:");
             foreach (Musica musica in artista.Musicas)
             {
-                Console.WriteLine($"{musica.Nome} -> {musica.Genero.Nome}");
+                Console.WriteLine($"{musica.Nome}");
             }
             Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
             Console.ReadKey();

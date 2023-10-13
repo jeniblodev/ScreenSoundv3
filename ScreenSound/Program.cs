@@ -1,8 +1,8 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-Artista ira = new Artista("Ira!");
-Artista beatles = new("The Beatles");
+Artista ira = new Artista("Ira!", "Banda Ira!");
+Artista beatles = new("The Beatles", "Banda The Beatles");
 
 Dictionary<string, Artista> bandasRegistradas = new();
 bandasRegistradas.Add(ira.Nome, ira);

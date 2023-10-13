@@ -3,8 +3,8 @@ using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
 try {
-    var connection = new Connection();
-    connection.ListarArtistas();
+    var artistaDAL = new ArtistaDAL();
+    artistaDAL.AdicionarArtista("Calypso", "Banda Calypso");
 } catch (Exception ex)
 {
     Console.WriteLine(ex.Message);

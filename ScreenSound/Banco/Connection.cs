@@ -16,23 +16,7 @@ namespace ScreenSound.Banco
             return new SqlConnection(connectionString);
         }
 
-        public void  ListarArtistas()
-        {
-            var connection = ObterConexao();
-            connection.Open();
-
-            string sql = "SELECT * FROM Artistas";
-            SqlCommand command = new SqlCommand(sql, connection);
-            SqlDataReader dataReader = command.ExecuteReader();
-
-            
-            while (dataReader.Read())
-            {
-                Console.WriteLine($"{dataReader["Id"]}, {dataReader["Nome"]}, {dataReader["FotoPerfil"]}, {dataReader["Bio"]}");
-            }
-
-            dataReader.Close();
-        }
+        
     }
 
 }

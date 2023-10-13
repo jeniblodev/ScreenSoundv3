@@ -1,5 +1,16 @@
-﻿using ScreenSound.Menus;
+﻿using ScreenSound.Banco;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
+
+try {
+    var connection = new Connection().ObterConexao();
+    connection.Open();
+} catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+
 
 Artista ira = new Artista("Ira!", "Banda Ira!");
 Artista beatles = new("The Beatles", "Banda The Beatles");
@@ -55,3 +66,4 @@ void ExibirOpcoesDoMenu()
 }
 
 ExibirOpcoesDoMenu();
+

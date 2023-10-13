@@ -4,7 +4,8 @@ using ScreenSound.Modelos;
 
 try {
     var artistaDAL = new ArtistaDAL();
-    artistaDAL.AdicionarArtista("Calypso", "Banda Calypso");
+    artistaDAL.AtualizarArtista(1004, "Foo Fighters", "Banda Foo Fighters");
+    artistaDAL.DeletarArtista(1003);
 } catch (Exception ex)
 {
     Console.WriteLine(ex.Message);

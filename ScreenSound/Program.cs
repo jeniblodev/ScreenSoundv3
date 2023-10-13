@@ -3,12 +3,13 @@ using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
 try {
-    var connection = new Connection().ObterConexao();
-    connection.Open();
+    var connection = new Connection();
+    connection.ListarArtistas();
 } catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
+
 
 
 

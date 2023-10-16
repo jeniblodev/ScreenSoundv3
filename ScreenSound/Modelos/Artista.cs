@@ -31,4 +31,12 @@ internal class Artista
             Console.WriteLine($"Música: {musica.Nome}");
         }
     }
+
+    public override string ToString()
+    {
+        return "Artista:\n" +
+            $"Nome: {Nome}\n" +
+            $"Foto de Perfil: {FotoPerfil}" +
+            $"Bio: {Bio}\n";
+    }
 }

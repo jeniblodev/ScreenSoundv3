@@ -4,22 +4,20 @@ using ScreenSound.Modelos;
 
 try {
     var artistaDAL = new ArtistaDAL();
-    artistaDAL.AtualizarArtista(1004, "Foo Fighters", "Banda Foo Fighters");
-    artistaDAL.DeletarArtista(1003);
+    var lista = artistaDAL.ListarArtistas();
+
+    foreach (var artista in lista)
+    {
+        Console.WriteLine(artista);
+    }
+
 } catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
 
 
-
-
-Artista ira = new Artista("Ira!", "Banda Ira!");
-Artista beatles = new("The Beatles", "Banda The Beatles");
-
 Dictionary<string, Artista> bandasRegistradas = new();
-bandasRegistradas.Add(ira.Nome, ira);
-bandasRegistradas.Add(beatles.Nome, beatles);
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarArtista()); // registrar artista (banda ou intérprete?)

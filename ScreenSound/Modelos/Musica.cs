@@ -3,14 +3,10 @@
 internal class Musica
 {
 
-    public Musica(Artista artista, string nome)
-    {
-        Artista = artista;
-        Nome = nome;  
-    }
+    public string Nome { get; set; }
+    public Artista Artista { get; set; }
 
-    public string Nome { get; }
-    public Artista Artista { get; }
+    public int Id { get; set; }
     public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}";
 
     public void ExibirFichaTecnica()

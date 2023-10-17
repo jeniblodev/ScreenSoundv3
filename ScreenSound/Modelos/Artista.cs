@@ -9,14 +9,6 @@ internal record Artista(string Nome, string? Bio, int Id = 0, string? FotoPerfil
         musicas.Add(musica);
     }
 
-    public void ExibirMusica()
-    {
-        foreach (Musica musica in musicas)
-        {
-            Console.WriteLine($"{musica.Nome}");
-        }
-    }
-
     public void ExibirDiscografia()
     {
         Console.WriteLine($"Discografia do artista {Nome}");

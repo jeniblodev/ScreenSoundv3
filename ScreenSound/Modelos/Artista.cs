@@ -1,16 +1,10 @@
-﻿namespace ScreenSound.Modelos; 
+﻿namespace ScreenSound.Modelos;
 
-internal class Artista 
+internal record Artista(string Nome, string? Bio, int Id = 0, string? FotoPerfil = null)
 {
-    private List<Musica> musicas = new List<Musica>();
-    
+    private readonly List<Musica> musicas = new();
 
-    public string Nome { get; set; }
-    public string FotoPerfil { get; set; }
-    public string Bio { get; set; }
-    public int Id { get; set; }
-
-    public void AdicionarMusica(Musica musica) 
+    public void AdicionarMusica(Musica musica)
     {
         musicas.Add(musica);
     }
@@ -22,13 +16,5 @@ internal class Artista
         {
             Console.WriteLine($"Música: {musica.Nome}");
         }
-    }
-
-    public override string ToString()
-    {
-        return "Artista:\n" +
-            $"Nome: {Nome}\n" +
-            $"Foto de Perfil: {FotoPerfil}\n" +
-            $"Bio: {Bio}\n";
     }
 }

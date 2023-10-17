@@ -15,9 +15,7 @@ internal class MenuRegistrarMusica : Menu
             Console.Write("Agora digite o título da música: ");
             string tituloMusica = Console.ReadLine()!;
             Artista artista = artistasRegistrados[nomeDoArtista];
-            var musica = new Musica();
-            musica.Nome = tituloMusica;
-            musica.Artista = artista;
+            var musica = new Musica(tituloMusica, artista);
             artista.AdicionarMusica(musica);
             Console.WriteLine($"A música {tituloMusica} de {nomeDoArtista} foi registrado com sucesso!");
             Thread.Sleep(4000);

@@ -1,32 +1,26 @@
 ﻿namespace ScreenSound.Modelos; 
 
-internal class Artista 
+internal record Artista(string Nome, string? Bio, int Id = 0, string? FotoPerfil = null) 
 {
-    private List<Musica> musicas = new List<Musica>();
-    
-
-    public Artista(string nome, string bio)
-    {
-        Nome = nome;
-        Bio = bio;
-
-    }
-
-    public string Nome { get; }
-    public string FotoPerfil { get; }
-    public string Bio { get; }
-
-    public IEnumerable<Musica> Musicas => musicas;
+    private readonly List<Musica> musicas = new();
 
     public void AdicionarMusica(Musica musica) 
     {
         musicas.Add(musica);
     }
 
+    public void ExibirMusica()
+    {
+        foreach (Musica musica in musicas)
+        {
+            Console.WriteLine($"{musica.Nome}");
+        }
+    }
+
     public void ExibirDiscografia()
     {
         Console.WriteLine($"Discografia do artista {Nome}");
-        foreach (var musica in Musicas)
+        foreach (var musica in musicas)
         {
             Console.WriteLine($"Música: {musica.Nome}");
         }

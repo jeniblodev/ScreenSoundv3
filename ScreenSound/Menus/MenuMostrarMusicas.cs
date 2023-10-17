@@ -14,10 +14,7 @@ internal class MenuMostrarMusicas : Menu
         {
             Artista artista = artistasRegistrados[nomeDoArtista];
             Console.WriteLine("\nDiscografia:");
-            foreach (Musica musica in artista.Musicas)
-            {
-                Console.WriteLine($"{musica.Nome}");
-            }
+            artista.ExibirMusica();
             Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
             Console.ReadKey();
             Console.Clear();

@@ -1,8 +1,9 @@
 ﻿namespace ScreenSound.Modelos;
 
-internal record Artista(string Nome, string? Bio, int Id = 0, string? FotoPerfil = null)
+internal record Artista(string Nome, string? Bio, int Id = 0)
 {
     private readonly List<Musica> musicas = new();
+    public string? FotoPerfil { get; set; } = "https://img.freepik.com/vetores-gratis/silhueta-feminina_23-2147524227.jpg";
 
     public void AdicionarMusica(Musica musica)
     {

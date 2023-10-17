@@ -1,10 +1,15 @@
 ﻿using ScreenSound.Banco;
+using ScreenSound.Context;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
 try {
-    var artistaDAL = new ArtistaDAL();
+    using var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
+
+    artistaDAL.AdicionarArtista("Lô Borges", "Bio Lô Borges");
     var lista = artistaDAL.ListarArtistas();
+    
 
     foreach (var artista in lista)
     {
@@ -15,6 +20,8 @@ try {
 {
     Console.WriteLine(ex.Message);
 }
+
+return;
 
 
 Dictionary<string, Artista> bandasRegistradas = new();

@@ -6,67 +6,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScreenSound.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace ScreenSound.Banco
 {
     internal class ArtistaDAL
     {
+        private readonly ScreenSoundContext context;
+
+        public ArtistaDAL(ScreenSoundContext context)
+        {
+            this.context = context;
+        }
+
         public IEnumerable<Artista> ListarArtistas() 
         {
-            using ScreenSoundContext context = new ScreenSoundContext();
             return context.Artistas.ToList();
         }
 
-
-
-        /*public void AdicionarArtista(string nome, string bio)
+        public void AdicionarArtista(string nome, string bio)
         {
-            using var connection = new Connection().ObterConexao();
-            connection.Open();
+            var artista = new Artista(nome, bio)
+            {
+                Nome = nome,
+                Bio = bio
+            };
 
-            var fotoPerfilPadrao = "https://img.freepik.com/vetores-gratis/silhueta-feminina_23-2147524227.jpg";
-
-            string sql = "INSERT INTO Artistas (Nome, FotoPerfil, Bio) VALUES (@nome, @perfilPadrao, @bio)";
-            SqlCommand command = new SqlCommand(sql, connection);
-
-            command.Parameters.AddWithValue("@nome", nome);
-            command.Parameters.AddWithValue("@perfilPadrao", fotoPerfilPadrao);
-            command.Parameters.AddWithValue("@bio", bio);
-
-            int retorno = command.ExecuteNonQuery();
-
-            Console.WriteLine($"Linhas afetadas: {retorno}");
-        }
-
-        public void AtualizarArtista(int id, string nome, string bio)
-        {
-            using var connection = new Connection().ObterConexao();
-            connection.Open();
-
-            string sql = $"UPDATE Artistas SET Nome = @nome, Bio = @bio WHERE Id = @id";
-            SqlCommand command = new SqlCommand(sql, connection);
-
-            command.Parameters.AddWithValue("@nome", nome);
-            command.Parameters.AddWithValue("@bio", bio);
-            command.Parameters.AddWithValue("@id", id);
-
-            int retorno = command.ExecuteNonQuery();
-
-            Console.WriteLine($"Linhas afetadas: {retorno}");
+            context.Artistas.Add(artista);
+            context.SaveChanges();
+           
         }
 
         public void DeletarArtista(int id)
         {
-            using var connection = new Connection().ObterConexao();
-            connection.Open();
+            var artista = context.Artistas.Find(id);
+            if(artista != null)
+            {
+                context.Artistas.Remove(artista);
+                context.SaveChanges();
+                Console.WriteLine("Artista removido com sucesso.");
+            } else
+            {
+                Console.WriteLine("Artista não encontrado, tente outro Id.");
+            }
+        }
 
-            string sql = $"DELETE FROM Artistas WHERE Id = @id";
-            SqlCommand command = new SqlCommand(sql, connection);
+        public void AtualizarArtista(int id,  string nome, string bio)
+        {
+            if (context.Artistas.Any(a => a.Id == id))
+            {
+                var artistaEditado = new Artista(nome, bio, id);
+                context.Artistas.Update(artistaEditado);
+                context.SaveChanges();
+                Console.WriteLine("Artista atualizado com sucesso.");
+            }
+            else
+            {
+                Console.WriteLine("Artista não encontrado, tente outro Id.");
+            }
 
-            command.Parameters.AddWithValue("@id", id);
-
-            int retorno = command.ExecuteNonQuery();
-
-            Console.WriteLine($"Linhas afetadas: {retorno}");
-        }*/
+        }
     }
 }

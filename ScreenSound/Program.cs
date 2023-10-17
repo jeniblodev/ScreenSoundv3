@@ -3,28 +3,9 @@ using ScreenSound.Context;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-try {
-    using var context = new ScreenSoundContext();
-    var artistaDAL = new ArtistaDAL(context);
 
-    artistaDAL.AdicionarArtista("Lô Borges", "Bio Lô Borges");
-    var lista = artistaDAL.ListarArtistas();
-    
-
-    foreach (var artista in lista)
-    {
-        Console.WriteLine(artista);
-    }
-
-} catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-return;
-
-
-Dictionary<string, Artista> bandasRegistradas = new();
+using var context = new ScreenSoundContext();
+var artistaDAL = new ArtistaDAL(context);
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarArtista()); // registrar artista (banda ou intérprete?)
@@ -63,7 +44,7 @@ void ExibirOpcoesDoMenu()
     if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
     {
         Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
-        menuASerExibido.Executar(bandasRegistradas);
+        menuASerExibido.Executar(artistaDAL);
         if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     } 
     else

@@ -19,12 +19,12 @@ namespace ScreenSound.Banco
             this.context = context;
         }
 
-        public IEnumerable<Artista> ListarArtistas() 
+        public IEnumerable<Artista> Listar() 
         {
             return context.Artistas.ToList();
         }
 
-        public void AdicionarArtista(string nome, string bio)
+        public void Adicionar(string nome, string bio)
         {
             var artista = new Artista(nome, bio)
             {
@@ -37,7 +37,7 @@ namespace ScreenSound.Banco
            
         }
 
-        public void DeletarArtista(int id)
+        public void Deletar(int id)
         {
             var artista = context.Artistas.Find(id);
             if(artista != null)
@@ -51,7 +51,7 @@ namespace ScreenSound.Banco
             }
         }
 
-        public void AtualizarArtista(int id,  string nome, string bio)
+        public void Atualizar(int id,  string nome, string bio)
         {
             if (context.Artistas.Any(a => a.Id == id))
             {
@@ -63,6 +63,21 @@ namespace ScreenSound.Banco
             else
             {
                 Console.WriteLine("Artista não encontrado, tente outro Id.");
+            }
+
+        }
+
+        public Artista RecuperarPeloNome(string nome)
+        {
+            var artista = context.Artistas.FirstOrDefault(a => a.Nome == nome);
+            if (artista != null)
+            {
+                return artista;
+            }
+            else
+            {
+                Console.WriteLine("Artista não encontrado, tente outro Id.");
+                return null;
             }
 
         }

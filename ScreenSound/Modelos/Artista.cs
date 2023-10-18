@@ -1,9 +1,19 @@
 ﻿namespace ScreenSound.Modelos;
 
-internal record Artista(string Nome, string? Bio, int Id = 0)
+internal class Artista
 {
-    private readonly List<Musica> musicas = new();
+    public string  Nome { get; set; }
+    public string Bio { get; set; }
+    public int Id { get; set; } = 0;
     public string? FotoPerfil { get; set; } = "https://img.freepik.com/vetores-gratis/silhueta-feminina_23-2147524227.jpg";
+    
+    private readonly List<Musica> musicas = new();
+
+    public Artista(string nome, string bio)
+    {
+        Nome = nome;
+        Bio = bio;
+    }
 
     public void AdicionarMusica(Musica musica)
     {

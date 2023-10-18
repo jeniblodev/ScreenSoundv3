@@ -1,7 +1,15 @@
 ﻿namespace ScreenSound.Modelos;
 
-internal record Musica(string Nome, int Id=0)
+internal class Musica
 {
+    public Musica(string nome)
+    {
+        Nome = nome;
+       
+    }
+
+    public string Nome { get; set; }
+    public int Id { get; set; } = 0;
 
     public void ExibirFichaTecnica()
     {

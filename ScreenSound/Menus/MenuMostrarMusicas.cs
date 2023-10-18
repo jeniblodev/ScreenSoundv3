@@ -6,13 +6,13 @@ namespace ScreenSound.Menus;
 
 internal class MenuMostrarMusicas : Menu
 {
-    public override void Executar(ArtistaDAL artistaDAL)
+    public override void Executar(EntityDAL<Artista> artistaDAL)
     {
         base.Executar(artistaDAL);
         ExibirTituloDaOpcao("Exibindo todas as músicas registrados na nossa aplicação");
 
         using var context = new ScreenSoundContext();
-        foreach (var musica in new MusicaDAL(context).Listar())
+        foreach (var musica in new EntityDAL<Musica>(context).Listar())
         {
             Console.WriteLine($"Musica: {musica}");
         }

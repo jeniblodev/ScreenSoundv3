@@ -53,7 +53,7 @@ namespace ScreenSound.Banco
         {
             if (context.Musicas.Any(a => a.Id == id))
             {
-                var musicaEditada = new Musica(nome, id);
+                var musicaEditada = new Musica(nome);
                 context.Musicas.Update(musicaEditada);
                 context.SaveChanges();
                 Console.WriteLine("Música atualizada com sucesso.");

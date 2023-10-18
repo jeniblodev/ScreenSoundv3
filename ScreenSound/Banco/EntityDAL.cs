@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ScreenSound.Banco
 {
-    internal abstract class EntityDAL<T> where T : class
+    public class EntityDAL<T> where T : class
     {
-        protected readonly ScreenSoundContext context;
+        private readonly ScreenSoundContext context;
 
-        protected EntityDAL(ScreenSoundContext context)
+        public EntityDAL(ScreenSoundContext context)
         {
             this.context = context;
         }
@@ -43,6 +43,11 @@ namespace ScreenSound.Banco
             context.SaveChanges();
             Console.WriteLine($"{typeof(T)} atualizado com sucesso.");
 
+        }
+
+        public virtual T? RecuperarPor(Func<T, bool> condicao)
+        {
+            return context.Set<T>().FirstOrDefault(condicao);
         }
 
     }

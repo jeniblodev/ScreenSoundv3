@@ -1,6 +1,6 @@
 ﻿namespace ScreenSound.Modelos;
 
-internal class Artista
+public class Artista
 {
     public string  Nome { get; set; }
     public string Bio { get; set; }

@@ -3,9 +3,12 @@ using ScreenSound.Context;
 using ScreenSound.Menus;
 using ScreenSound.Modelos;
 
-
 using var context = new ScreenSoundContext();
 var artistaDAL = new ArtistaDAL(context);
+
+var artistaRecuperado = new EntityDAL<Artista>(context).RecuperarPor(a => a.Id == 1002);
+Console.WriteLine(artistaRecuperado.Nome);
+return;
 
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarArtista()); // registrar artista (banda ou intérprete?)

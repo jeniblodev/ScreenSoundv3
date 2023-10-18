@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ScreenSound.Banco
 {
-    internal class ArtistaDAL
+    internal class ArtistaDAL: EntityDAL<Artista> 
     {
         private readonly ScreenSoundContext context;
 
@@ -19,22 +19,15 @@ namespace ScreenSound.Banco
             this.context = context;
         }
 
-        public IEnumerable<Artista> Listar() 
+        public override IEnumerable<Artista> Listar()
         {
             return context.Artistas.ToList();
         }
 
-        public void Adicionar(string nome, string bio)
+        public override void Adicionar(Artista objeto)
         {
-            var artista = new Artista(nome, bio)
-            {
-                Nome = nome,
-                Bio = bio
-            };
-
-            context.Artistas.Add(artista);
+            context.Set<Artista>().Add(objeto);
             context.SaveChanges();
-           
         }
 
         public void Deletar(int id)
@@ -81,5 +74,7 @@ namespace ScreenSound.Banco
             }
 
         }
+
+        
     }
 }

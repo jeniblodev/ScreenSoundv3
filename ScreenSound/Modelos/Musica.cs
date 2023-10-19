@@ -10,6 +10,7 @@ public class Musica
 
     public string Nome { get; set; }
     public int Id { get; set; } = 0;
+    
 
     public void ExibirFichaTecnica()
     {

@@ -12,6 +12,8 @@ public class Musica
     public int Id { get; set; } = 0;
     public string Genero { get; set; }
 
+    public Artista? Artista { get; set; }
+
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Nome: {Nome}");

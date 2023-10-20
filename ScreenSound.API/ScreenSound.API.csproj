@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScreenSound.Modelos\ScreenSound.Commons.Modelos.csproj" />
+    <ProjectReference Include="..\ScreenSound.Modelos\ScreenSound.Shared.Modelos.csproj" />
   </ItemGroup>
 
 </Project>

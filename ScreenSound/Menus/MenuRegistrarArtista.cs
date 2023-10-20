@@ -1,5 +1,5 @@
-﻿using ScreenSound.Banco;
-using ScreenSound.Commons.Modelos;
+﻿using ScreenSound.Shared.Banco;
+using ScreenSound.Shared.Modelos;
 
 namespace ScreenSound.Menus;
 internal class MenuRegistrarArtista : Menu

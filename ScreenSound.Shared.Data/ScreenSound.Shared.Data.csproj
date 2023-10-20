@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScreenSound.Modelos\ScreenSound.Shared.Modelos.csproj" />
+    <ProjectReference Include="..\ScreenSound.Shared.Modelos\ScreenSound.Shared.Modelos.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,6 +16,7 @@ public class Musica
 
     public void ExibirFichaTecnica()
     {
-        Console.WriteLine($"Nome: {Nome}");
+        Console.WriteLine($@"Nome: {Nome} - Gênero: {Genero}");
+
     }
 }

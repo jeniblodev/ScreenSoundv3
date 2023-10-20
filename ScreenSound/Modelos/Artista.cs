@@ -29,7 +29,15 @@ public class Artista
         Console.WriteLine($"Discografia do artista {Nome}");
         foreach (var musica in Musicas)
         {
-            Console.WriteLine($"Música: {musica.Nome}");
+            musica.ExibirFichaTecnica();
         }
+    }
+
+    public override string ToString()
+    {
+        return $@"Id: {Id}
+            Nome: {Nome}
+            Foto de Perfil: {FotoPerfil}
+            Bio: {Bio}";
     }
 }

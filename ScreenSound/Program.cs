@@ -11,6 +11,7 @@ opcoes.Add(1, new MenuRegistrarArtista()); // registrar artista (banda ou intér
 opcoes.Add(2, new MenuRegistrarMusica()); // registrar música do artista
 opcoes.Add(3, new MenuMostrarArtistas());  // exibir artistas cadastrados
 opcoes.Add(4, new MenuMostrarMusicas()); // exibir detalhes de um artista
+opcoes.Add(5, new MenuMostrarMusicasPorGenero());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
@@ -34,6 +35,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 2 para registrar a música de um artista");
     Console.WriteLine("Digite 3 para mostrar todas os artistas");
     Console.WriteLine("Digite 4 para exibir os detalhes de um artista");
+    Console.WriteLine("Digite 5 para exibir as músicas por gênero");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");

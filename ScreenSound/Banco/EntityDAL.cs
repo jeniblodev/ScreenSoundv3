@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
-using ScreenSound.Context;
-using ScreenSound.Modelos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ScreenSound.Context;
 
 namespace ScreenSound.Banco
 {

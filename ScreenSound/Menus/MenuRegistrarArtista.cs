@@ -1,8 +1,7 @@
 ﻿using ScreenSound.Banco;
-using ScreenSound.Modelos;
+using ScreenSound.Commons.Modelos;
 
 namespace ScreenSound.Menus;
-
 internal class MenuRegistrarArtista : Menu
 {
     public override void Executar(EntityDAL<Artista> artistaDAL)

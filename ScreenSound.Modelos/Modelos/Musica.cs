@@ -1,5 +1,4 @@
-﻿namespace ScreenSound.Modelos;
-
+﻿namespace ScreenSound.Commons.Modelos;
 public class Musica
 {
     public Musica(string nome)
@@ -8,9 +7,9 @@ public class Musica
        
     }
 
-    public string Nome { get; set; }
+    public string? Nome { get; set; }
     public int Id { get; set; } = 0;
-    public string Genero { get; set; }
+    public string? Genero { get; set; }
 
     public Artista? Artista { get; set; }
 

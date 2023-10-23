@@ -1,3 +1,4 @@
+using ScreenSound.Shared.Banco;
 using ScreenSound.Shared.Context;
 using ScreenSound.Shared.Modelos;
 
@@ -12,18 +13,20 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 var contexto = new ScreenSoundContext();
+var entityDAL = new EntityDAL<Artista>(contexto);
 
 app.MapPost("/adicionar", (Artista artista) =>
 {
-    
-    contexto.Artistas.Add(artista);
-    contexto.SaveChanges();
+    entityDAL.Adicionar(artista);
+
 });
 
 app.MapGet("/selecionar", () =>
 {
-    return contexto.Artistas.ToList();
+    return entityDAL.Listar();
 });
+
+
 
 app.Run();
 

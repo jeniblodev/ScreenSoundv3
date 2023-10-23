@@ -26,7 +26,10 @@ app.MapGet("/selecionar", () =>
     return entityDAL.Listar();
 });
 
-
+app.MapGet("/selecionar/{nome}", (string nome) =>
+{
+    return entityDAL.RecuperarPor(a => a.Nome == nome);
+});
 
 app.Run();
 

@@ -31,6 +31,16 @@ app.MapGet("/selecionar/{nome}", (string nome) =>
     return entityDAL.RecuperarPor(a => a.Nome == nome);
 });
 
+app.MapGet("/remover", (Artista artista) =>
+{
+    entityDAL.Deletar(artista);
+});
+
+app.MapPut("/atualizar", (Artista artista) =>
+{
+    entityDAL.Atualizar(artista);
+});
+
 app.Run();
 
 

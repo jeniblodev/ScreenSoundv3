@@ -11,20 +11,19 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+var contexto = new ScreenSoundContext();
 
 app.MapPost("/adicionar", (Artista artista) =>
 {
-    var contexto = new ScreenSoundContext();
+    
     contexto.Artistas.Add(artista);
     contexto.SaveChanges();
 });
 
 app.MapGet("/selecionar", () =>
 {
-    var contexto = new ScreenSoundContext();
     return contexto.Artistas.ToList();
-  
-}).WithName("Selecionar");
+});
 
 app.Run();
 

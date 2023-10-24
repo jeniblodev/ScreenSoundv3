@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ScreenSound.API.DTO;
 using ScreenSound.API.Services;
 using ScreenSound.Shared.Banco;

@@ -12,6 +12,7 @@ builder.Services.AddTransient<ScreenSoundContext>();
 builder.Services.AddTransient(typeof(EntityDAL<Artista>));
 builder.Services.AddTransient(typeof(EntityDAL<Musica>));
 builder.Services.AddTransient(typeof(ArtistaConverter));
+builder.Services.AddTransient(typeof(MusicaConverter));
 
 var app = builder.Build();
 

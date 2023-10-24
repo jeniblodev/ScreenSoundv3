@@ -9,30 +9,28 @@ public static class Musicas
 {
     public static void AddEndPointMusicas(this WebApplication app)
     {
-            var contexto = new ScreenSoundContext();
-            var entityDAL = new EntityDAL<Musica>(contexto);
     
-            app.MapPost("/Musicas", ([FromBody] Musica musica) =>
+            app.MapPost("/Musicas", ([FromServices]EntityDAL<Musica> entityDAL,[FromBody] Musica musica) =>
             {
                 entityDAL.Adicionar(musica);
             });
     
-            app.MapGet("/Musicas", () =>
+            app.MapGet("/Musicas", ([FromServices] EntityDAL<Musica> entityDAL) =>
             {
                 return entityDAL.Listar();
             });
     
-            app.MapGet("/Musicas/{nome}", (string nome) =>
+            app.MapGet("/Musicas/{nome}", ([FromServices]EntityDAL<Musica> entityDAL,string nome) =>
             {
                 return entityDAL.RecuperarPor(a => a.Nome == nome);
             });
     
-            app.MapDelete("/Musicas", ([FromBody] Musica musica) =>
+            app.MapDelete("/Musicas", ([FromServices]EntityDAL<Musica> entityDAL,[FromBody] Musica musica) =>
             {
                 entityDAL.Deletar(musica);
             });
     
-            app.MapPut("/Musicas", ([FromBody] Musica musica) =>
+            app.MapPut("/Musicas", ([FromServices]EntityDAL<Musica> entityDAL,[FromBody] Musica musica) =>
             {
                 entityDAL.Atualizar(musica);
             });

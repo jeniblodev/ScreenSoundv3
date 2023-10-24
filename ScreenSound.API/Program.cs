@@ -42,6 +42,32 @@ app.MapPut("/Artistas", ([FromBody] Artista artista) =>
     entityDAL.Atualizar(artista);
 });
 
+var entityMusicaDAL = new EntityDAL<Musica>(contexto);
+
+app.MapPost("/Musicas", ([FromBody] Musica musica) =>
+{
+    entityMusicaDAL.Adicionar(musica);
+});
+
+app.MapGet("/Musicas", () =>
+{
+    return entityMusicaDAL.Listar();
+});
+
+app.MapGet("/Musicas/{nome}", (string nome) =>
+{
+    return entityDAL.RecuperarPor(a => a.Nome == nome);
+});
+
+app.MapDelete("/Musicas", ([FromBody] Artista artista) =>
+{
+    entityDAL.Deletar(artista);
+});
+
+app.MapPut("/Musicas", ([FromBody] Artista artista) =>
+{
+    entityDAL.Atualizar(artista);
+});
 app.Run();
 
 

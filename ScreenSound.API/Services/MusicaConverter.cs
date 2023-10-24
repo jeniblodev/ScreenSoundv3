@@ -12,8 +12,7 @@ public class MusicaConverter
     }
 
     public Musica RequestToEntityEdit(MusicaRequestEdit musicaRequestEdit)
-    {
-        
+    {        
         return new Musica(musicaRequestEdit.Nome)
         { Id = musicaRequestEdit.Id,Genero = musicaRequestEdit.Genero };
     }

@@ -56,17 +56,17 @@ app.MapGet("/Musicas", () =>
 
 app.MapGet("/Musicas/{nome}", (string nome) =>
 {
-    return entityDAL.RecuperarPor(a => a.Nome == nome);
+    return entityMusicaDAL.RecuperarPor(a => a.Nome == nome);
 });
 
-app.MapDelete("/Musicas", ([FromBody] Artista artista) =>
+app.MapDelete("/Musicas", ([FromBody] Musica musica) =>
 {
-    entityDAL.Deletar(artista);
+    entityMusicaDAL.Deletar(musica);
 });
 
-app.MapPut("/Musicas", ([FromBody] Artista artista) =>
+app.MapPut("/Musicas", ([FromBody] Musica musica) =>
 {
-    entityDAL.Atualizar(artista);
+    entityMusicaDAL.Atualizar(musica);
 });
 app.Run();
 

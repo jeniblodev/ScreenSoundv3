@@ -7,11 +7,7 @@ public class Artista
     public int Id { get; set; } = 0;
     public string? FotoPerfil { get; set; } = "https://img.freepik.com/vetores-gratis/silhueta-feminina_23-2147524227.jpg";
 
-
-
-    public ICollection<Musica> Musicas { get; set; } = new List<Musica>();
-
-
+    public virtual ICollection<Musica> Musicas { get; set; } = new List<Musica>();
 
     public Artista(string nome, string bio)
     {

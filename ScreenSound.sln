@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.ConsoleApp", "ScreenSound\ScreenSound.ConsoleApp.csproj", "{A9CCE41C-6657-42BF-AED4-F3F578033037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.ConsoleApp", "ScreenSound\ScreenSound.ConsoleApp.csproj", "{37CDE61D-FDD2-4BB7-8651-87869411B252}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.API", "ScreenSound.API\ScreenSound.API.csproj", "{E793EBCD-A2A6-4454-9815-C438103BD85D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.API", "ScreenSound.API\ScreenSound.API.csproj", "{7F392233-9074-46DF-878C-1826358E4E71}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.Shared.Data", "ScreenSound.Shared.Data\ScreenSound.Shared.Data.csproj", "{95EA8E84-181C-48DF-B2DA-C95F68BBDFA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.Shared.Data", "ScreenSound.Shared.Data\ScreenSound.Shared.Data.csproj", "{2C840F56-AD87-4888-8344-88E62BA009A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.Shared.Modelos", "ScreenSound.Shared.Modelos\ScreenSound.Shared.Modelos.csproj", "{5EEAB600-EBA2-4C32-A99E-B1E26C1F0457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScreenSound.Shared.Modelos", "ScreenSound.Shared.Modelos\ScreenSound.Shared.Modelos.csproj", "{828BD973-C4BF-43DC-9A63-4894CCBDA0AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A9CCE41C-6657-42BF-AED4-F3F578033037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9CCE41C-6657-42BF-AED4-F3F578033037}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9CCE41C-6657-42BF-AED4-F3F578033037}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9CCE41C-6657-42BF-AED4-F3F578033037}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E793EBCD-A2A6-4454-9815-C438103BD85D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E793EBCD-A2A6-4454-9815-C438103BD85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E793EBCD-A2A6-4454-9815-C438103BD85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E793EBCD-A2A6-4454-9815-C438103BD85D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95EA8E84-181C-48DF-B2DA-C95F68BBDFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95EA8E84-181C-48DF-B2DA-C95F68BBDFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95EA8E84-181C-48DF-B2DA-C95F68BBDFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95EA8E84-181C-48DF-B2DA-C95F68BBDFA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EEAB600-EBA2-4C32-A99E-B1E26C1F0457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EEAB600-EBA2-4C32-A99E-B1E26C1F0457}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EEAB600-EBA2-4C32-A99E-B1E26C1F0457}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EEAB600-EBA2-4C32-A99E-B1E26C1F0457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CDE61D-FDD2-4BB7-8651-87869411B252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CDE61D-FDD2-4BB7-8651-87869411B252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CDE61D-FDD2-4BB7-8651-87869411B252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CDE61D-FDD2-4BB7-8651-87869411B252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F392233-9074-46DF-878C-1826358E4E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F392233-9074-46DF-878C-1826358E4E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F392233-9074-46DF-878C-1826358E4E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F392233-9074-46DF-878C-1826358E4E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C840F56-AD87-4888-8344-88E62BA009A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C840F56-AD87-4888-8344-88E62BA009A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C840F56-AD87-4888-8344-88E62BA009A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C840F56-AD87-4888-8344-88E62BA009A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828BD973-C4BF-43DC-9A63-4894CCBDA0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828BD973-C4BF-43DC-9A63-4894CCBDA0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828BD973-C4BF-43DC-9A63-4894CCBDA0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828BD973-C4BF-43DC-9A63-4894CCBDA0AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

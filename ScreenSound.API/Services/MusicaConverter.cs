@@ -6,11 +6,6 @@ namespace ScreenSound.API.Services;
 
 public class MusicaConverter
 {
-    private readonly EntityDAL<Artista> artistaDAL;
-    public MusicaConverter(EntityDAL<Artista> _artistaDAL)
-    {
-        artistaDAL = _artistaDAL;
-    }
     public Musica RequestToEntity(MusicaRequest musicaRequest)
     {
         return new Musica(musicaRequest.Nome) { Genero = musicaRequest.Genero};
@@ -25,7 +20,7 @@ public class MusicaConverter
 
     public MusicaResponse EntityToResponse(Musica musica)
     {       
-        return new MusicaResponse(musica.Id,musica.Nome!,musica.Genero!,musica.Artista.Id,musica.Artista.Nome);
+       return new MusicaResponse(musica.Id,musica.Nome!,musica.Genero!,musica.Artista.Id,musica.Artista.Nome);
     }
 
     public ICollection<MusicaResponse> EntityListToResponseList(IEnumerable<Musica> musicas)

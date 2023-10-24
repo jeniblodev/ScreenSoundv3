@@ -4,7 +4,7 @@ using ScreenSound.Shared.Modelos;
 
 namespace ScreenSound.API.Endpoints;
 
-public static class Musicas
+public static class MusicasExtensions
 {
     public static void AddEndPointMusicas(this WebApplication app)
     {

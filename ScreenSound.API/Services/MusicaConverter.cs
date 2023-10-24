@@ -1,5 +1,4 @@
 ﻿using ScreenSound.API.DTO;
-using ScreenSound.Shared.Banco;
 using ScreenSound.Shared.Modelos;
 
 namespace ScreenSound.API.Services;

@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ScreenSound.Shared.Modelos;
 
 namespace ScreenSound.Shared.Context;
 
-public class ScreenSoundContext: DbContext
+public class ScreenSoundContext: IdentityDbContext
 {
     public DbSet<Artista> Artistas { get; set; }
     public DbSet<Musica> Musicas { get; set; }

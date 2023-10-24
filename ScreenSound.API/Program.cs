@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using ScreenSound.Shared.Banco;
 using ScreenSound.Shared.Context;
 using ScreenSound.Shared.Modelos;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,28 +17,27 @@ app.UseHttpsRedirection();
 var contexto = new ScreenSoundContext();
 var entityDAL = new EntityDAL<Artista>(contexto);
 
-app.MapPost("/adicionar", (Artista artista) =>
+app.MapPost("/Artistas", ([FromBody] Artista artista) =>
 {
     entityDAL.Adicionar(artista);
-
 });
 
-app.MapGet("/selecionar", () =>
+app.MapGet("/Artistas", () =>
 {
     return entityDAL.Listar();
 });
 
-app.MapGet("/selecionar/{nome}", (string nome) =>
+app.MapGet("/Artistas/{nome}", (string nome) =>
 {
     return entityDAL.RecuperarPor(a => a.Nome == nome);
 });
 
-app.MapGet("/remover", (Artista artista) =>
+app.MapDelete("/Artistas", ([FromBody] Artista artista) =>
 {
     entityDAL.Deletar(artista);
 });
 
-app.MapPut("/atualizar", (Artista artista) =>
+app.MapPut("/Artistas", ([FromBody] Artista artista) =>
 {
     entityDAL.Atualizar(artista);
 });

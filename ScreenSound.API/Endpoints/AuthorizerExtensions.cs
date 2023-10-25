@@ -26,11 +26,10 @@ public static class AuthorizerExtensions
              {
                  return Results.BadRequest($"Falha ao criar usuário. Contacte o administrador ===>{result.Errors}");
              }
-             await signInManager.SignInAsync(identityUser, false);
-             return Results.Ok(user);
+             return Results.Ok() ;
          });
 
-        app.MapPost("/Login", async ([FromBody]UserDTO user,SignInManager<IdentityUser> signInManager) =>
+        app.MapPost("/Login", async ([FromServices] TokenService tokenService,[FromBody]UserDTO user,SignInManager<IdentityUser> signInManager) =>
         {
             if (user is null)
             {
@@ -42,10 +41,10 @@ public static class AuthorizerExtensions
             if (!result.Succeeded)
             {
                 return Results.BadRequest("Login inválido.");
-            }          
-
+            }        
+            
             user.Senha = string.Empty;
-            return Results.Ok(user);
+            return Results.Ok(tokenService.GenerateJWToken(user));
         });
     }
 }

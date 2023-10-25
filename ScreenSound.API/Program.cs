@@ -20,6 +20,7 @@ builder.Services.AddTransient(typeof(EntityDAL<Artista>));
 builder.Services.AddTransient(typeof(EntityDAL<Musica>));
 builder.Services.AddTransient(typeof(ArtistaConverter));
 builder.Services.AddTransient(typeof(MusicaConverter));
+builder.Services.AddTransient(typeof(TokenService));
 
 var app = builder.Build();
 

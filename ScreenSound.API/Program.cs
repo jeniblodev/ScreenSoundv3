@@ -55,17 +55,17 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.AddEndPointAuthorizer();
+app.MapEndPointAuthorizer();
 
-app.AddEndPointArtistas();
+app.MapEndPointArtistas();
 
-app.AddEndPointMusicas();
-
+app.MapEndPointMusicas();
 
 app.Run();
 

@@ -9,7 +9,7 @@ namespace ScreenSound.API.Endpoints;
 
 public static class AuthorizerExtensions
 {
-    public static void AddEndPointAuthorizer(this WebApplication app)
+    public static void MapEndPointAuthorizer(this WebApplication app)
     {
 
         app.MapPost("/Registrar", async ([FromBody] UserDTO user,UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) =>

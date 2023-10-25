@@ -8,7 +8,7 @@ namespace ScreenSound.API.Endpoints;
 
 public static class MusicasExtensions
 {
-    public static void AddEndPointMusicas(this WebApplication app)
+    public static void MapEndPointMusicas(this WebApplication app)
     {
     
             app.MapPost("/Musicas", ([FromServices] MusicaConverter converter,[FromServices]EntityDAL<Musica> entityDAL,[FromBody] MusicaRequest musicaReq) =>

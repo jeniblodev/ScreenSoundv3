@@ -10,25 +10,26 @@ namespace ScreenSound.API.Endpoints;
 
 public static class ArtistasExtensions
 {
-
-    public static void AddEndPointArtistas(this WebApplication app)
+    
+    public static void MapEndPointArtistas(this WebApplication app)
     {
-        app.MapPost("/Artistas",([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL,[FromBody] ArtistaRequest artistaReq) =>
+
+        app.MapPost("/Artistas",[Authorize]([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL, [FromBody] ArtistaRequest artistaReq) =>
         {
             entityDAL.Adicionar(converter.RequestToEntity(artistaReq));
-        }).RequireAuthorization();
+        });
 
         app.MapGet("/Artistas", [Authorize] ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
         {
             return converter.EntityListToResponseList(entityDAL.Listar());
         });
 
-        app.MapGet("/Artistas/{nome}", ([FromServices] EntityDAL<Artista> entityDAL,string nome) =>
+        app.MapGet("/Artistas/{nome}", [Authorize] ([FromServices] EntityDAL<Artista> entityDAL,string nome) =>
         {
             return entityDAL.RecuperarPor(a => a.Nome == nome);
         });
 
-        app.MapDelete("/Artistas/{id}", ([FromServices] EntityDAL<Artista> entityDAL,int id) =>
+        app.MapDelete("/Artistas/{id}", [Authorize] ([FromServices] EntityDAL<Artista> entityDAL,int id) =>
         {
             var artista = entityDAL.RecuperarPor(a => a.Id == id);
             if (artista is null)
@@ -39,7 +40,7 @@ public static class ArtistasExtensions
             return Results.NoContent();
         });
 
-        app.MapPut("/Artistas", ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL, [FromBody] ArtistaRequestEdit artistaRequestEdit) =>
+        app.MapPut("/Artistas", [Authorize] ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL, [FromBody] ArtistaRequestEdit artistaRequestEdit) =>
         {
             entityDAL.Atualizar(converter.RequestToEntityEdit(artistaRequestEdit));
         });

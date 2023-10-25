@@ -41,7 +41,7 @@ public static class AuthorizerExtensions
             if (!result.Succeeded)
             {
                 return Results.BadRequest("Login inválido.");
-            }        
+            }
             
             user.Senha = string.Empty;
             return Results.Ok(tokenService.GenerateJWToken(user));

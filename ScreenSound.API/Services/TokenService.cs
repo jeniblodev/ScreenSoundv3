@@ -8,6 +8,11 @@ namespace ScreenSound.API.Services;
 
 public class TokenService
 {
+    private readonly IConfiguration configuration;
+    public TokenService(IConfiguration configuration)
+    {
+      this.configuration = configuration;
+    }
     public UserTokenResponse GenerateJWToken(UserDTO user)
     {
         var myClaims = new[]
@@ -16,9 +21,10 @@ public class TokenService
                new Claim("alura","c#"),
                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
             };
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SenhaSuperSecretaChave@1985")); 
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTTokenConfiguration:SigningKey"]!)); 
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); 
-        var token = new JwtSecurityToken("ScreenSound", "ScreenSound", claims:myClaims, expires: DateTime.Now.AddHours(8), signingCredentials: credentials); 
+        var token = new JwtSecurityToken(configuration["JWTTokenConfiguration:Issuer"], 
+            configuration["JWTTokenConfiguration:Audience"], claims:myClaims, expires: DateTime.Now.AddHours(8), signingCredentials: credentials); 
         return new UserTokenResponse()
         {     
          Token = new JwtSecurityTokenHandler().WriteToken(token),

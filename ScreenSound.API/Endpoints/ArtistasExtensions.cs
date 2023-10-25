@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ScreenSound.API.DTO;
 using ScreenSound.API.Services;
 using ScreenSound.Shared.Banco;
@@ -11,12 +13,12 @@ public static class ArtistasExtensions
 
     public static void AddEndPointArtistas(this WebApplication app)
     {
-        app.MapPost("/Artistas", ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL,[FromBody] ArtistaRequest artistaReq) =>
+        app.MapPost("/Artistas",([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL,[FromBody] ArtistaRequest artistaReq) =>
         {
             entityDAL.Adicionar(converter.RequestToEntity(artistaReq));
-        });
+        }).RequireAuthorization();
 
-        app.MapGet("/Artistas", ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
+        app.MapGet("/Artistas", [Authorize] ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
         {
             return converter.EntityListToResponseList(entityDAL.Listar());
         });

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ScreenSound.API.DTO;
 using ScreenSound.API.Services;
@@ -12,7 +13,7 @@ public static class AuthorizerExtensions
     public static void MapEndPointAuthorizer(this WebApplication app)
     {
 
-        app.MapPost("/Registrar", async ([FromBody] UserDTO user,UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) =>
+        app.MapPost("/Registrar",[AllowAnonymous] async ([FromBody] UserDTO user,UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) =>
          {
              var identityUser = new IdentityUser
              {

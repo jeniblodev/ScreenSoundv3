@@ -1,0 +1,40 @@
+﻿@page "/"
+@page "/login"
+@inject NavigationManager NavigationManager
+@inject AutorizarAPI autorizarAPI
+
+@layout EmptyLayout
+<h3>Login</h3>
+<div style="width: 300px; margin: 0 auto; margin-top: 100px; border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+    <form>
+        <label for="username" style="display: block; width: 100%; margin-bottom: 10px;">Usuário</label>
+        <input type="text" id="username" @bind=user.Email name="username" placeholder="Digite seu usuário" style="display: block; width: 100%; margin-bottom: 10px;">
+
+        <label for="password" style="display: block; width: 100%; margin-bottom: 10px;">Senha</label>
+        <input type="password" @bind=user.Senha id="password" name="password" placeholder="Digite sua senha" style="display: block; width: 100%; margin-bottom: 10px;">
+                
+        <button type="button" class="btn-primary" @onclick="FazerLogin">Logar</button>
+    </form>
+ </div>
+
+@code {
+
+    public UserDTO? user { get; set; }
+
+    protected override void OnInitialized()
+    {
+        user = new();
+    }
+
+    private async Task FazerLogin()
+    {       
+
+        var response = await autorizarAPI.LoginAsync(user!);
+
+        if (response is not null)
+        {
+            NavigationManager.NavigateTo("/home");
+        }       
+    }
+
+}

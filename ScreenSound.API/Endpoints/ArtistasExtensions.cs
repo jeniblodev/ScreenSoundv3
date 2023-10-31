@@ -19,7 +19,7 @@ public static class ArtistasExtensions
             entityDAL.Adicionar(converter.RequestToEntity(artistaReq));
         });
 
-        app.MapGet("/Artistas", [Authorize] ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
+        app.MapGet("/Artistas", ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
         {
             return converter.EntityListToResponseList(entityDAL.Listar());
         });

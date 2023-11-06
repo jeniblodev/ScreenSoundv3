@@ -2,7 +2,16 @@
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-        
+        @*<AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <Authorizing> 
+                <Alerta>
+                    <h1>Autorizando o usuário...</h1>
+                </Alerta>
+            </Authorizing>
+            <NotAuthorized>
+                <h2>Usuário não Autorizado...</h2>
+            </NotAuthorized>
+        </AuthorizeRouteView>*@
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>
@@ -10,5 +19,7 @@
             <p role="alert">Desculpe, nada encontrado neste endereço!</p>
             <img src="https://media.giphy.com/media/EeIX8IZvvGZ2CRCWSO/giphy.gif" alt="404" />
         </LayoutView>
+
     </NotFound>
+    
 </Router>

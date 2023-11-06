@@ -21,4 +21,7 @@ builder.Services.AddHttpClient<AutorizarAPI>(client => {
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
+builder.Services.AddSingleton<TokenService>();
+
+
 await builder.Build().RunAsync();

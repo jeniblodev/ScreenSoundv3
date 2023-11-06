@@ -1,13 +1,16 @@
 ﻿using ScreenSound.Shared.Modelos;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace ScreenSound.BlazorApp.Servicos;
 public class ArtistasAPI
 {
     private readonly HttpClient _httpClient;
-    public ArtistasAPI(HttpClient httpClient)
+    public ArtistasAPI(HttpClient httpClient, TokenService tokenService)
     {
         _httpClient = httpClient;
+        _httpClient.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("bearer", tokenService.Token);
     }
     public async Task<List<Artista>?> GetArtistasAsync()
     {

@@ -1,7 +1,10 @@
 ﻿@page "/"
 @page "/login"
+
 @inject NavigationManager NavigationManager
 @inject AutorizarAPI autorizarAPI
+@inject TokenService tokenService
+@attribute [AllowAnonymous]
 
 @layout EmptyLayout
 <h3>Login</h3>
@@ -21,18 +24,22 @@
 
     public UserDTO? user { get; set; }
 
-    protected override void OnInitialized()
+    
+    protected override async Task OnInitializedAsync()
     {
-        user = new();
+        user = new();     
     }
 
     private async Task FazerLogin()
     {       
 
+
         var response = await autorizarAPI.LoginAsync(user!);
 
         if (response is not null)
         {
+          
+            tokenService.Token = response.Token;            
             NavigationManager.NavigateTo("/home");
         }       
     }

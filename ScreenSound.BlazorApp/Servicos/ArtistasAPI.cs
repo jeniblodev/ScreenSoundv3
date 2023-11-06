@@ -6,11 +6,9 @@ namespace ScreenSound.BlazorApp.Servicos;
 public class ArtistasAPI
 {
     private readonly HttpClient _httpClient;
-    public ArtistasAPI(HttpClient httpClient, TokenService tokenService)
+    public ArtistasAPI(HttpClient httpClient)
     {
-        _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("bearer", tokenService.Token);
+        _httpClient = httpClient;    
     }
     public async Task<List<Artista>?> GetArtistasAsync()
     {

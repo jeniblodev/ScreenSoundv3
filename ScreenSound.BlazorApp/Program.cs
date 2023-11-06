@@ -16,12 +16,5 @@ builder.Services.AddHttpClient<ArtistasAPI>(client => {
      client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
-builder.Services.AddHttpClient<AutorizarAPI>(client => {
-    client.BaseAddress = new Uri("https://localhost:7016");
-    client.DefaultRequestHeaders.Add("Accept", "application/json");
-});
-
-builder.Services.AddSingleton<TokenService>();
-
 
 await builder.Build().RunAsync();

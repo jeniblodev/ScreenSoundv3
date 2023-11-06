@@ -1,5 +1,4 @@
 ﻿using ScreenSound.Shared.Modelos;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace ScreenSound.BlazorApp.Servicos;

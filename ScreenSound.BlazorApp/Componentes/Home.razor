@@ -4,7 +4,7 @@
 <h3>Últimos artistas cadastrados...</h3>
 @if(Artistas is not null)
 {
-    @foreach (var item in Artistas)
+    @foreach (var item in Artistas.OrderByDescending(a=>a.Id).Take(5))
     {
         <div class="artist-card bordered-div">
             <div class="artist-name">@item.Nome</div>
@@ -18,7 +18,7 @@
 <h3>Últimas músicas cadastrados...</h3>
 @if (Musicas is not null)
 {
-    @foreach (var item in Musicas)
+    @foreach (var item in Musicas.OrderByDescending(a => a.Id).Take(5))
     {
         <div class="music-card bordered-div">
             <div class="music-title">@item.Nome</div>

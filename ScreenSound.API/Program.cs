@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using ScreenSound.API;
 using ScreenSound.API.Endpoints;
 using ScreenSound.API.Services;
 using ScreenSound.Shared.Banco;
@@ -14,6 +11,13 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.ConfigureAppConfiguration(config =>
+{
+    var settings = config.Build();
+    config.AddAzureAppConfiguration("Endpoint=https://appconfiguration-screensoundapi.azconfig.io;Id=q/aB;Secret=g9RBOquM4M/V0JpNL5qVCHcyCasmx7V5XB1xOz0//pk=");
+});
+
+
 // Add services to the container.
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
@@ -22,13 +26,13 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.AddAuthentication(options =>
 {
-   // options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-   // options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
     .AddJwtBearer(options =>
-    {
-   
+    {       
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -44,7 +48,11 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddScoped<ScreenSoundContext>();
+builder.Services.AddDbContext<ScreenSoundContext>(
+    options =>
+    {
+        options.UseSqlServer(builder.Configuration["ConnectionString"]).UseLazyLoadingProxies();
+    });
 builder.Services.AddTransient(typeof(EntityDAL<Artista>));
 builder.Services.AddTransient(typeof(EntityDAL<Musica>));
 builder.Services.AddTransient(typeof(ArtistaConverter));

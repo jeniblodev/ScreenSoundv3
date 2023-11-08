@@ -22,9 +22,15 @@ public static class ArtistasExtensions
             return converter.EntityListToResponseList(entityDAL.Listar());
         }).WithTags("Artista").WithSummary("Listagem de artistas cadastrados.").WithOpenApi();
 
-        app.MapGet("/Artistas/{nome}", ([FromServices] EntityDAL<Artista> entityDAL,string nome) =>
+        app.MapGet("/Artistas/{nome}", ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL,string nome) =>
         {
-            return entityDAL.RecuperarPor(a => a.Nome == nome);
+            var artista = entityDAL.RecuperarPor(a => a.Nome == nome);
+            if (artista is not null)
+            {
+                var response = converter.EntityToResponse(artista!);
+                return Results.Ok(response);
+            }
+            return Results.NotFound("Artista não encontrado.");
         }).WithTags("Artista").WithSummary("Busca um artista por nome.").WithOpenApi();
 
         app.MapDelete("/Artistas/{id}", ([FromServices] EntityDAL<Artista> entityDAL,int id) =>

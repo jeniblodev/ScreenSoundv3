@@ -1,5 +1,4 @@
 ﻿using ScreenSound.API.DTO;
-using ScreenSound.Shared.Banco;
 using ScreenSound.Shared.Modelos;
 
 namespace ScreenSound.API.Services;
@@ -19,7 +18,7 @@ public class MusicaConverter
 
     public MusicaResponse EntityToResponse(Musica musica)
     {       
-       return new MusicaResponse(musica.Id,musica.Nome!,musica.Genero!,musica.Artista.Id,musica.Artista.Nome);
+       return new MusicaResponse(musica.Id,musica.Nome!,musica.Genero!,musica.Artista!.Id,musica.Artista.Nome);
     }
 
     public ICollection<MusicaResponse> EntityListToResponseList(IEnumerable<Musica> musicas)

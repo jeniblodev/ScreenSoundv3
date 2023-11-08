@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddTransient<ScreenSoundContext>();
 builder.Services.AddTransient(typeof(EntityDAL<Artista>));
 builder.Services.AddTransient(typeof(EntityDAL<Musica>));
@@ -17,12 +20,15 @@ builder.Services.AddTransient(typeof(MusicaConverter));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseSwagger();
 
 app.UseHttpsRedirection();
 
 app.AddEndPointArtistas();
 
 app.AddEndPointMusicas();
+
+app.UseSwaggerUI();
 
 app.Run();
 

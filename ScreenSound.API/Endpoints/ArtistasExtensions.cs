@@ -14,17 +14,18 @@ public static class ArtistasExtensions
         app.MapPost("/Artistas", ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL,[FromBody] ArtistaRequest artistaReq) =>
         {
             entityDAL.Adicionar(converter.RequestToEntity(artistaReq));
-        });
+        }).WithTags("Artista").WithSummary("Adiciona um novo artista").WithOpenApi();
+
 
         app.MapGet("/Artistas", ([FromServices] ArtistaConverter converter, [FromServices] EntityDAL<Artista> entityDAL) =>
         {
             return converter.EntityListToResponseList(entityDAL.Listar());
-        });
+        }).WithTags("Artista").WithSummary("Listagem de artistas cadastrados.").WithOpenApi();
 
         app.MapGet("/Artistas/{nome}", ([FromServices] EntityDAL<Artista> entityDAL,string nome) =>
         {
             return entityDAL.RecuperarPor(a => a.Nome == nome);
-        });
+        }).WithTags("Artista").WithSummary("Busca um artista por nome.").WithOpenApi();
 
         app.MapDelete("/Artistas/{id}", ([FromServices] EntityDAL<Artista> entityDAL,int id) =>
         {
@@ -35,11 +36,11 @@ public static class ArtistasExtensions
             }
             entityDAL.Deletar(artista);
             return Results.NoContent();
-        });
+        }).WithTags("Artista").WithSummary("Exclui um artista cadastrado.").WithOpenApi();
 
         app.MapPut("/Artistas", ([FromServices] ArtistaConverter converter,[FromServices] EntityDAL<Artista> entityDAL, [FromBody] ArtistaRequestEdit artistaRequestEdit) =>
         {
             entityDAL.Atualizar(converter.RequestToEntityEdit(artistaRequestEdit));
-        });
+        }).WithTags("Artista").WithSummary("Atualiza o registro de um artista.").WithOpenApi();
     }
 }

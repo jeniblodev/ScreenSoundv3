@@ -10,8 +10,9 @@ public class Musica
     }
 
     public string? Nome { get; set; }
-    public int Id { get; set; } = 0;
+    public int Id { get; set; }=0;
     public virtual ICollection<Genero> Generos { get; set; }
+    public int? ArtistaId { get; set; }
     public virtual Artista? Artista { get; set; }
     public void ExibirFichaTecnica()
     {

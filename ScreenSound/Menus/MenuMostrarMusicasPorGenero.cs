@@ -13,7 +13,7 @@ internal class MenuMostrarMusicasPorGenero : Menu
         Console.Write("Digite o gênero para consultar músicas:");
         string genero = Console.ReadLine()!;
         var musicaDal = new EntityDAL<Musica>(new ScreenSoundContext());
-        var listaGenero = musicaDal.ListarPor(a => a.Genero == genero);
+        var listaGenero = musicaDal.ListarPor(a => a.Nome == genero);
         if (listaGenero.Any())
         {
             Console.WriteLine($"\nMusicas do Genero {genero}:");

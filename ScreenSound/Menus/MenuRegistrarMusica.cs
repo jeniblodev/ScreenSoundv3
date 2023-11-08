@@ -18,7 +18,7 @@ internal class MenuRegistrarMusica : Menu
             string tituloMusica = Console.ReadLine()!;
             Console.Write("Agora digite o gênero da música: ");
             string generoMusica = Console.ReadLine()!;
-            var musicaRegistrada = new Musica(tituloMusica) { Genero = generoMusica };
+            var musicaRegistrada = new Musica(tituloMusica) { /*Genero = generoMusica */};
             artista.AdicionarMusica(musicaRegistrada);
 
 

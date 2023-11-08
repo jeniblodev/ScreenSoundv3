@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScreenSound.Shared.Context;
 
@@ -11,9 +12,11 @@ using ScreenSound.Shared.Context;
 namespace ScreenSound.Shared.Migrations
 {
     [DbContext(typeof(ScreenSoundContext))]
-    partial class ScreenSoundContextModelSnapshot : ModelSnapshot
+    [Migration("20231108190150_Adição do Genero")]
+    partial class AdiçãodoGenero
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,21 +27,6 @@ namespace ScreenSound.Shared.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("GeneroMusica", b =>
-                {
-                    b.Property<int>("GenerosId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MusicasId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GenerosId", "MusicasId");
-
-                    b.HasIndex("MusicasId");
-
-                    b.ToTable("GeneroMusica");
-                });
 
             modelBuilder.Entity("ScreenSound.Shared.Modelos.Artista", b =>
                 {
@@ -94,6 +82,9 @@ namespace ScreenSound.Shared.Migrations
                     b.Property<int?>("ArtistaId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Genero")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
@@ -102,21 +93,6 @@ namespace ScreenSound.Shared.Migrations
                     b.HasIndex("ArtistaId");
 
                     b.ToTable("Musicas");
-                });
-
-            modelBuilder.Entity("GeneroMusica", b =>
-                {
-                    b.HasOne("ScreenSound.Shared.Modelos.Modelos.Genero", null)
-                        .WithMany()
-                        .HasForeignKey("GenerosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ScreenSound.Shared.Modelos.Musica", null)
-                        .WithMany()
-                        .HasForeignKey("MusicasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ScreenSound.Shared.Modelos.Musica", b =>
